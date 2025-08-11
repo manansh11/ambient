@@ -1,5 +1,3 @@
-import CryptoJS from 'crypto-js';
-
 export interface IntentionData {
   what: string;
   when: string;
@@ -12,8 +10,6 @@ export interface IntentionStats {
   interested: number;
   here: number;
 }
-
-const SECRET_KEY = process.env.NEXT_PUBLIC_ENCRYPTION_KEY || 'ambient-default-key-change-in-production';
 
 export function encodeIntention(data: IntentionData): string {
   try {

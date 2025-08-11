@@ -13,7 +13,7 @@ function decodeIntention(payload: string) {
     // Simple base64 decoding
     const jsonString = atob(base64);
     return JSON.parse(jsonString);
-  } catch (error) {
+  } catch {
     // Return default if decode fails
     return {
       what: "Someone's ambient intention",

@@ -53,21 +53,27 @@ export default async function IntentionPage({ params }: PageProps) {
     intention = decodeIntention(payload);
   } catch {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4">
+      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 px-4 py-8">
         <div className="max-w-md mx-auto">
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-            <div className="text-red-400 text-5xl mb-4">❌</div>
-            <h1 className="text-2xl font-semibold text-gray-800 mb-2">
-              Invalid Link
+          <header className="text-center mb-8">
+            <h1 className="text-3xl font-black text-gray-900 mb-2">
+              ambient
             </h1>
+          </header>
+          
+          <div className="bg-white rounded-3xl shadow-lg p-6 text-center">
+            <div className="text-6xl mb-4">😵</div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              invalid link
+            </h2>
             <p className="text-gray-600 mb-6">
-              This ambient link is invalid or corrupted.
+              this link is broken or corrupted.
             </p>
             <Link
               href="/"
-              className="inline-block bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center justify-center w-full py-4 px-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-2xl font-bold hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-[1.02]"
             >
-              Create Your Own
+              create a new link
             </Link>
           </div>
         </div>
