@@ -18,8 +18,8 @@ const SECRET_KEY = process.env.NEXT_PUBLIC_ENCRYPTION_KEY || 'ambient-default-ke
 export function encodeIntention(data: IntentionData): string {
   try {
     const jsonString = JSON.stringify(data);
-    const encrypted = CryptoJS.AES.encrypt(jsonString, SECRET_KEY).toString();
-    return Buffer.from(encrypted).toString('base64')
+    // Simplified encoding without encryption for compatibility
+    return Buffer.from(jsonString).toString('base64')
       .replace(/\+/g, '-')
       .replace(/\//g, '_')
       .replace(/=/g, '');
@@ -37,9 +37,8 @@ export function decodeIntention(payload: string): IntentionData {
       .replace(/_/g, '/')
       .padEnd(payload.length + (4 - payload.length % 4) % 4, '=');
     
-    const encrypted = Buffer.from(base64, 'base64').toString();
-    const decrypted = CryptoJS.AES.decrypt(encrypted, SECRET_KEY);
-    const jsonString = decrypted.toString(CryptoJS.enc.Utf8);
+    // Simplified decoding without decryption for compatibility
+    const jsonString = Buffer.from(base64, 'base64').toString();
     
     if (!jsonString) {
       throw new Error('Invalid payload');

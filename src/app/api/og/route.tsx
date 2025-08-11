@@ -1,15 +1,28 @@
 import { ImageResponse } from '@vercel/og';
 import { NextRequest } from 'next/server';
 
-// For now, let's create a generic beautiful preview
-function getDefaultIntention() {
-  return {
-    what: "Someone's ambient intention",
-    when: new Date().toISOString(),
-    where: "",
-    note: "Join naturally",
-    createdAt: Date.now()
-  };
+// Simple decode function for edge runtime
+function decodeIntention(payload: string) {
+  try {
+    // Convert URL-safe base64 back to regular base64
+    const base64 = payload
+      .replace(/-/g, '+')
+      .replace(/_/g, '/')
+      .padEnd(payload.length + (4 - payload.length % 4) % 4, '=');
+    
+    // Simple base64 decoding
+    const jsonString = atob(base64);
+    return JSON.parse(jsonString);
+  } catch (error) {
+    // Return default if decode fails
+    return {
+      what: "Someone's ambient intention",
+      when: new Date().toISOString(),
+      where: "",
+      note: "Join naturally",
+      createdAt: Date.now()
+    };
+  }
 }
 
 function formatTime(dateTime: string): string {
@@ -37,7 +50,7 @@ export async function GET(request: NextRequest) {
       return new Response('Missing payload parameter', { status: 400 });
     }
 
-    const intention = getDefaultIntention();
+    const intention = decodeIntention(payload);
     const location = intention.where || '';
     const timeDisplay = formatTime(intention.when);
 
