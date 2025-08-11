@@ -1,0 +1,11 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="630" fill="url(#paint0_linear_0_1)"/>
+<text x="600" y="280" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">Ambient</text>
+<text x="600" y="380" font-family="Arial, sans-serif" font-size="28" fill="white" text-anchor="middle" opacity="0.9">Zero-friction intention broadcasting</text>
+<defs>
+<linearGradient id="paint0_linear_0_1" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+<stop stop-color="#398BF4"/>
+<stop offset="1" stop-color="#7C3AED"/>
+</linearGradient>
+</defs>
+</svg>

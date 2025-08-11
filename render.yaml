@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: ambient
+    runtime: node
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_ENCRYPTION_KEY
+        generateValue: true
